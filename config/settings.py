@@ -68,12 +68,12 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+PAGINATION_SETTINGS = {
+    'PAGE_SIZE': 10,
+    'MAX_PAGE_SIZE': 50,
+    'PAGE_QUERY_PARAM': 'page',
+    'PAGE_SIZE_QUERY_PARAM': 'page_size',
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
