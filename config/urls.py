@@ -10,10 +10,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("user/", include("users.urls", namespace="users")),
     path("shop/", include("shop.urls", namespace="shop")),
+    path("cart/", include("carts.urls", namespace="cart")),
 
 
-    # path('login/', TokenObtainPairView.as_view(permission_classes=(AllowAny,)), name='login'),
-    # path('token/refresh/', TokenRefreshView.as_view(permission_classes=(AllowAny,)), name='token_refresh'),
+    path('login/', TokenObtainPairView.as_view(permission_classes=(AllowAny,)), name='login'),
+    path('token/refresh/', TokenRefreshView.as_view(permission_classes=(AllowAny,)), name='token_refresh'),
 ]
 
 if settings.DEBUG:

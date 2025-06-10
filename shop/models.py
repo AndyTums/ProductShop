@@ -19,10 +19,10 @@ class Category(models.Model):
         max_length=150, verbose_name="Название категории"
     )
     slug = AutoSlugField(
-        populate_from=transliterate_name, unique=True, verbose_name="Slug"
+        populate_from=transliterate_name, unique=True, editable=True, verbose_name="Slug", blank=True, null=True
     )
     image = models.ImageField(
-        upload_to='categories/images/', verbose_name="Изображение"
+        upload_to='categories/images/', verbose_name="Изображение", blank=True, null=True
     )
 
     class Meta:
@@ -40,10 +40,10 @@ class Subcategory(models.Model):
         max_length=150, verbose_name="Название подкатегории"
     )
     slug = AutoSlugField(
-        populate_from=transliterate_name, unique=True, verbose_name="Slug"
+        populate_from=transliterate_name, unique=True, editable=True, verbose_name="Slug", blank=True, null=True
     )
     image = models.ImageField(
-        upload_to='subcategories/images/', verbose_name="Изображение"
+        upload_to='subcategories/images/', verbose_name="Изображение", blank=True, null=True
     )
     category = models.ForeignKey(
         Category, related_name='subcategories', on_delete=models.CASCADE, verbose_name="Родительская категория"
@@ -64,24 +64,24 @@ class Product(models.Model):
         max_length=255, verbose_name="Наименование продукта"
     )
     slug = AutoSlugField(
-        populate_from=transliterate_name, unique=True, verbose_name="Slug"
+        populate_from=transliterate_name, unique=True, editable=True, verbose_name="Slug", blank=True, null=True
     )
     price = models.DecimalField(
         max_digits=10, decimal_places=2, verbose_name="Цена"
     )
     subcategory = models.ForeignKey(
-        Subcategory, related_name='products', on_delete=models.CASCADE, verbose_name="Категория"
+        Subcategory, related_name='products', on_delete=models.CASCADE, verbose_name="Подкатегория"
     )
 
     # Изображений в 3-х размерах
     image_small = models.ImageField(
-        upload_to='products/images/small/', verbose_name="Изображение малого размера"
+        upload_to='products/images/small/', verbose_name="Изображение малого размера", blank=True, null=True
     )
     image_medium = models.ImageField(
-        upload_to='products/images/medium/', verbose_name="Изображение среднего размера"
+        upload_to='products/images/medium/', verbose_name="Изображение среднего размера", blank=True, null=True
     )
     image_large = models.ImageField(
-        upload_to='products/images/large/', verbose_name="Изображение большого размера"
+        upload_to='products/images/large/', verbose_name="Изображение большого размера", blank=True, null=True
     )
 
     class Meta:

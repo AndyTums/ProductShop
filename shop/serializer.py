@@ -15,6 +15,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ('name', 'price', 'category', 'subcategory', 'slug', 'image_small', 'image_medium', 'image_large')
+        read_only_fields = ('slug',)
 
 
 class SubcategorySerializer(serializers.ModelSerializer):
@@ -22,7 +23,8 @@ class SubcategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Subcategory
-        fields = ('name', 'slug', 'image')
+        fields = ('name', 'slug', 'image', 'category')
+        read_only_fields = ('slug',)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -32,4 +34,5 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('name', 'slug', 'image', 'subcategories')
+        fields = ('name', 'image', 'subcategories', 'slug')
+        read_only_fields = ('slug',)
