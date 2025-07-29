@@ -1,3 +1,4 @@
+from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
 
 from carts.models import Cart
@@ -17,3 +18,10 @@ class UserViewSet(ModelViewSet):
 
         user = serializer.save()
         Cart.objects.create(user=user)
+
+    @action(detail=False, methods=['delete'])
+    def delete_account(self, request):
+        user = self.request.user
+        
+
+
